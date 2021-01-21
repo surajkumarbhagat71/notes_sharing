@@ -1,0 +1,26 @@
+{% extends 'users/base.html' %}
+
+
+{% block content  %}
+    {% load crispy_forms_tags %}
+<div class="container mt-5">
+<div class="row">
+    <div class="col-lg-6 mx-auto">
+        <div class="card">
+            <div class="card-body border-0 shadow-sm">
+                <form action="{% url 'sandnote' pk %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table class="table">
+                        {{ forms|crispy }}
+                    </table>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

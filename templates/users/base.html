@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark  sticky-top" style="background-color:transparent">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand ml-5 " style="color:#FDA7DF" href=""><img src="{% static 'logo.jfif' %}" alt="" height="90px" style="border-radius:40px;" ></a>
+
+
+      <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+
+          {% if user.is_authenticated  %}
+              <li class="nav-item">
+                <a class="btn btn-danger mr-5" href="{% url 'logout' %}">Logout</a>
+              </li>
+           {% else %}
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle mr-5" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User
+                  </a>
+                  <ul class="dropdown-menu mt-2 mr-3" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'signup' %}">Signup</a></li>
+                    <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
+                  </ul>
+              </li>
+
+          {% endif %}
+        </ul>
+    </div>
+  </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:#8db600" >
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <ul class="navbar-nav ml-5 mx-auto mb-lg-0">
+        <li class="nav-item"><a href="{% url 'alluser' %}" class="nav-link active ml-5">Friend</a></li>
+        <li class="nav-item"><a href="{% url 'allsendnote' %}" class="nav-link active ml-5">Sand Note</a></li>
+        <li class="nav-item"><a href="{% url 'allrecivenote' %}" class="nav-link active ml-5">Recived Note</a></li>
+        <li class="nav-item"><a href="{% url 'profile' %}" class="nav-link active ml-5">Profile</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+{% block content  %} {% endblock %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

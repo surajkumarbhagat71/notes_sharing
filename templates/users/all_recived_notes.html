@@ -1,0 +1,35 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <div class="container">
+         <div class="row">
+            <div class="col-lg-6 mx-auto mt-4 mb-2">
+                 <form action="{% url 'searchrecived' %}" method="get" class="d-flex ml-auto">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Enter the Sander name  OR  notes title" name="search" class="form-control">
+                    <input type="submit" value="Search" class="btn btn-sm float-right" style="margin-left:-60px">
+                 </form>
+            </div>
+         </div>
+
+        <div class="row">
+            <div class="col-lg-7 mx-auto">
+                <div class="card">
+                    <div class="card-body border-0 shadow-sm">
+                    <h5 class="display-5 text-success text-muted mb-3 ml-3">Recived  Notes</h5>
+                        <table class="table table-hover">
+                            {% for foo in recivednote %}
+                            <tr>
+                                <td><img src="{{ foo.sender_id.image.url }}" alt="" style="height:80px; width:80px; border-radius: 50px;"></td>
+                                <td>{{ foo.sender_id.name }}</td>
+                                <td><a href="{{ foo.note.url }}" download>{{ foo.title }}</a></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-lg-6 mx-auto mt-4">
+                 <form action="{% url 'searchfriend' %}" method="get" class="d-flex ml-auto">
+                {% csrf_token %}
+                    <input type="text" placeholder="Enter the id" name="search" class="form-control">
+                    <input type="submit" value="Search" class="btn btn-sm float-right" style="margin-left:-60px">
+            </form>
+            </div>
+        </div>
+
+
+            <div class="row">
+            {% for foo in alluser %}
+            <div class="col-lg-5 mx-auto mt-3">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body border-0 shadow-sm">
+                       <table class="table">
+                           <tr>
+                               <td><img src="{{ foo.image.url }}" alt="" style="height:80px; width:80px; border-radius:50px;"></td>
+                               <td><a href="{% url 'sandnote' foo.ud_id %}"><h5 class="display-5 mt-4 mr-5">{{ foo.name }}</h5></a></td>
+                           </tr>
+                       </table>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
