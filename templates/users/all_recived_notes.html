@@ -22,7 +22,7 @@
                             <tr>
                                 <td><img src="{{ foo.sender_id.image.url }}" alt="" style="height:80px; width:80px; border-radius: 50px;"></td>
                                 <td>{{ foo.sender_id.name }}</td>
-                                <td><a href="{{ foo.note.url }}" download>{{ foo.title }}</a></td>
+                                <td><a href="{{ foo.note.url }}" download><i class="fas fa-arrow-circle-down mr-3 ml-4">{{ foo.title }}</i> </a></td>
                             </tr>
                             {% endfor %}
                         </table>
